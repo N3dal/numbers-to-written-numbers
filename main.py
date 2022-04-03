@@ -28,6 +28,9 @@ from os import name as OS_NAME
 from os import system
 
 
+MAX_LIMIT_NUMBER = 1_000_000 * 1000
+
+
 def clear():
     """wipe the terminal screen"""
 
@@ -48,6 +51,9 @@ def num2written(number: object):
     input-type: float/int/str.
     valid inputs:
     '12345' => [VALID]
+    '12_345' => [VALID]
+    12_345 => [VALID]
+    '12_345.32' => [VALID]
     12345 => [VALID]
     123.45 => [VALID]
     '32FD' => [NON-VALID]
@@ -72,17 +78,26 @@ def num2written(number: object):
             except ValueError:
                 return -1
 
+    if number > MAX_LIMIT_NUMBER:
+        # max number we can convert to it is billion.
+        return -1
+
     # now convert num into string.
     string_num = str(number)
 
-    
+    WRITTEN_NUMBERS = (
+        "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+        "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eightteen", "nineteen",
+        "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety",
+        "hundred", "thousnad", "million", "billion"
+    )
 
     return number
 
 
 def main():
 
-    num = num2written("12314")
+    num = num2written("123_142_343")
     print(num)
 
 
