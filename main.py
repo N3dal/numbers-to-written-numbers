@@ -17,10 +17,11 @@
 # 21=> "twenty-one" not "twenty one",
 # 771=> "seven hundred and seventy-one" not "seven hundred and seventy-one"
 
-# TODO: make it this script convert from binary/hex/oct to decimal then,
+# TODO: make this script convert from binary/hex/oct to decimal then,
 # TODO: write the written number, in simple words convert from (binary/hex/oct) to written num.
 # TODO: convert any exp number to written for example "3e10" express on it first then write it.
 # TODO: or "3.5E10" same thing.
+# TODO: make this script able to express any negative number either float or integer, or even string.
 
 
 from os import name as OS_NAME
@@ -54,9 +55,35 @@ def num2written(number: object):
     output-type: string.
     """
 
+    # Guard conditions.
+
+    if type(number) not in (int, float, str):
+        return -1
+
+    if type(number) is str:
+
+        try:
+            number = int(number)
+
+        except ValueError:
+
+            try:
+                number = float(number)
+            except ValueError:
+                return -1
+
+    # now convert num into string.
+    string_num = str(number)
+
+    
+
+    return number
+
 
 def main():
-    pass
+
+    num = num2written("12314")
+    print(num)
 
 
 if __name__ == "__main__":
