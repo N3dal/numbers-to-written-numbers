@@ -30,7 +30,7 @@ from os import name as OS_NAME
 from os import system
 
 
-MAX_LIMIT_NUMBER = 1_000_000 * 1000
+MAX_LIMIT_NUMBER = 999_999_999_999
 
 ONES = {0: "", 1: "one", 2: "two", 3: "three", 4: "four",
         5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine"}
@@ -102,22 +102,28 @@ def num2written(number: object):
     if number < 10:
         return ONES[number]
 
-    if number in range(10, 20):
+    if 9 < number < 20:
         return TEENS[number % 10]
 
-    if number in range(20, 100):
+    if 19 < number < 100:
         return TENS[number//10] + "-" + ONES[number % 10]
 
-    if number in range(100, 1000):
+    if 99 < number < 1000:
         return ONES[number // 100] + " " + "hundred" + " and " + num2written(number % 100)
 
-    if number > 1000:
-        return num2written(number // 1000) + " " + ILLIONS[1] + " and " + num2written(number % 1000)
+    if 999 < number < (1000**2):
+        return num2written(number // (1000)) + " " + "thousand" + " and " + num2written(number % (1000))
+
+    if 999_999 < number < (1000**3):
+        return num2written(number // (1000**2)) + " " + "million" + " and " + num2written(number % (1000**2))
+
+    if 999_999_999 < number < (1000**4):
+        return num2written(number // (1000**3)) + " " + "billion" + " and " + num2written(number % (1000**3))
 
 
 def main():
 
-    print(num2written(999999))
+    print(num2written(322_342_883_123), '.', sep='')
 
 
 if __name__ == "__main__":
