@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -----------------------------------------------------------------
-# simple script fro convert numbers includes (int, float),
+# simple script for convert numbers includes (int, float),
 # to written numbers as string.
 #
 #
@@ -29,6 +29,12 @@ from os import system
 
 
 MAX_LIMIT_NUMBER = 1_000_000 * 1000
+WRITTEN_NUMBERS = (
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+    "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eightteen", "nineteen",
+    "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety",
+    "hundred", "thousnad", "million", "billion"
+)
 
 
 def clear():
@@ -82,22 +88,12 @@ def num2written(number: object):
         # max number we can convert to it is billion.
         return -1
 
-    # now convert num into string.
-    string_num = str(number)
-
-    WRITTEN_NUMBERS = (
-        "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-        "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eightteen", "nineteen",
-        "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety",
-        "hundred", "thousnad", "million", "billion"
-    )
-
     return number
 
 
 def main():
 
-    num = num2written("123_142_343")
+    num = num2written("123_142_343.3")
     print(num)
 
 
