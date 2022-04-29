@@ -15,7 +15,9 @@
 
 # note remember to add dash/hyp between some numbers like:
 # 21=> "twenty-one" not "twenty one",
-# 771=> "seven hundred and seventy-one" not "seven hundred and seventy-one"
+# 771=> "seven hundred and seventy-one" not "seven hundred and seventy
+# -----------------------------------------------------------------
+# simple script forone"
 
 # TODO: make this script convert from binary/hex/oct to decimal then,
 # TODO: write the written number, in simple words convert from (binary/hex/oct) to written num.
@@ -29,12 +31,14 @@ from os import system
 
 
 MAX_LIMIT_NUMBER = 1_000_000 * 1000
-WRITTEN_NUMBERS = (
-    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-    "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eightteen", "nineteen",
-    "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety",
-    "hundred", "thousnad", "million", "billion"
-)
+
+ONES = {0: "zero", 1: "one", 2: "two", 3: "three", 4: "four",
+        5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine"}
+TENS = {1: "eleven", 2: "twelve", 3: "thirteen", 4: "fourteen",
+        5: "fiveteen", 6: "sixteen", 7: "seventeen", 8: "eighteen", 9: "nineteen"}
+HUNDREDS = {0: "hundred"}
+
+ILLIONS = {1: "thousand", 2: "million", 3: "billion"}
 
 
 def clear():
@@ -75,7 +79,7 @@ def num2written(number: object):
     if type(number) is str:
 
         try:
-            number = int(number)
+            number = float(number)
 
         except ValueError:
 
@@ -88,12 +92,21 @@ def num2written(number: object):
         # max number we can convert to it is billion.
         return -1
 
-    return number
+    # first convert the number to  string.
+    number_str = str(number)
+
+    # second get the number length.
+    number_len = len(number_str)
+    print(number_str)
+    for num in number_str:
+        print(ONES[int(num) % 10])
+
+    # return number
 
 
 def main():
 
-    num = num2written("123_142_343.3")
+    num = num2written(134_432)
     print(num)
 
 
