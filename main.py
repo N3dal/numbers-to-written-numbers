@@ -32,13 +32,14 @@ from os import system
 
 MAX_LIMIT_NUMBER = 1_000_000 * 1000
 
-ONES = {0: "zero", 1: "one", 2: "two", 3: "three", 4: "four",
+ONES = {0: "", 1: "one", 2: "two", 3: "three", 4: "four",
         5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine"}
-TENS = {1: "eleven", 2: "twelve", 3: "thirteen", 4: "fourteen",
-        5: "fiveteen", 6: "sixteen", 7: "seventeen", 8: "eighteen", 9: "nineteen"}
-HUNDREDS = {0: "hundred"}
+TEENS = {0: "ten", 1: "eleven", 2: "twelve", 3: "thirteen", 4: "fourteen",
+         5: "fiveteen", 6: "sixteen", 7: "seventeen", 8: "eighteen", 9: "nineteen"}
+TENS = {2: "twenty", 3: "thirty", 4: "forty", 5: "fifty",
+        6: "sixty", 7: "seventy", 8: "eighty", 9: "ninety"}
 
-ILLIONS = {1: "thousand", 2: "million", 3: "billion"}
+ILLIONS = {1: "thousand", 1000: "million", 1000*1000: "billion"}
 
 
 def clear():
@@ -97,17 +98,26 @@ def num2written(number: object):
 
     # second get the number length.
     number_len = len(number_str)
-    print(number_str)
-    for num in number_str:
-        print(ONES[int(num) % 10])
 
-    # return number
+    if number < 10:
+        return ONES[number]
+
+    if number in range(10, 20):
+        return TEENS[number % 10]
+
+    if number in range(20, 100):
+        return TENS[number//10] + "-" + ONES[number % 10]
+
+    if number in range(100, 1000):
+        return ONES[number // 100] + " " + "hundred" + " and " + num2written(number % 100)
+
+    if number > 1000:
+        return num2written(number // 1000) + " " + ILLIONS[1] + " and " + num2written(number % 1000)
 
 
 def main():
 
-    num = num2written(134_432)
-    print(num)
+    print(num2written(999999))
 
 
 if __name__ == "__main__":
