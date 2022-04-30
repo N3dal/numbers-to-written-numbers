@@ -1,4 +1,4 @@
-# Numbers to Full-name number.
+# Numbers to Full-WRITTEN-Name Number.
 
 simple script to convert INTEGER and FLOAT numbers,
 to written format.
