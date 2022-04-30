@@ -56,15 +56,15 @@ clear()
 
 
 def num2written(number: object):
-    """convert any float/int/string number to written number.
-    input-type: float/int/str.
+    """convert any int/string number to written number.
+    input-type: int/str.
     valid inputs:
     '12345' => [VALID]
     '12_345' => [VALID]
     12_345 => [VALID]
-    '12_345.32' => [VALID]
+    '12_345.32' => [NON-VALID]
     12345 => [VALID]
-    123.45 => [VALID]
+    123.45 => [NON-VALID]
     '32FD' => [NON-VALID]
 
     output-type: string.
@@ -72,18 +72,18 @@ def num2written(number: object):
 
     # Guard conditions.
 
-    if type(number) not in (int, float, str):
+    if type(number) not in (int,  str):
         return -1
 
     if type(number) is str:
 
         try:
-            number = float(number)
+            number = int(number)
 
         except ValueError:
 
             try:
-                number = float(number)
+                number = int(number)
             except ValueError:
                 return -1
 
@@ -117,7 +117,7 @@ def num2written(number: object):
 
 def main():
 
-    print(num2written(322_342_883_123), '.', sep='')
+    print(num2written(321.23), '.', sep='')
 
 
 if __name__ == "__main__":
