@@ -98,26 +98,32 @@ def num2written(number: object):
         return TEENS[number % 10]
 
     elif 19 < number < 100:
-        return TENS[number//10] + "-" + ONES[number % 10]
+        # add strip to remove the - dash.
+        return (TENS[number//10] + "-" + ONES[number % 10]).strip('-')
 
     elif 99 < number < 1000:
-        return ONES[number // 100] + " " + "hundred" + " and " + num2written(number % 100)
+        # remove the space then remove the 'a' and 'n' and 'd', then remove the space again.
+        return (ONES[number // 100] + " " + "hundred" + " and " + num2written(number % 100)).strip().strip('and').strip()
 
     elif 999 < number < (1000**2):
-        return num2written(number // (1000)) + " " + "thousand" + " and " + num2written(number % (1000))
+        # remove the space then remove the 'a' and 'n' and 'd', then remove the space again.
+        return (num2written(number // (1000)) + " " + "thousand" + " and " + num2written(number % (1000))).strip().strip('and').strip()
 
     elif 999_999 < number < (1000**3):
-        return num2written(number // (1000**2)) + " " + "million" + " and " + num2written(number % (1000**2))
+        # remove the space then remove the 'a' and 'n' and 'd', then remove the space again.
+        return (num2written(number // (1000**2)) + " " + "million" + " and " + num2written(number % (1000**2))).strip().strip('and').strip()
 
     elif 999_999_999 < number < (1000**4):
-        return num2written(number // (1000**3)) + " " + "billion" + " and " + num2written(number % (1000**3))
+        # remove the space then remove the 'a' and 'n' and 'd', then remove the space again.
+        return (num2written(number // (1000**3)) + " " + "billion" + " and " + num2written(number % (1000**3))).strip().strip('and').strip()
+
     else:
         return -1
 
 
 def main():
 
-    print(num2written(321.23), '.', sep='')
+    print(num2written(1_000_000), '.', sep='')
 
 
 if __name__ == "__main__":
