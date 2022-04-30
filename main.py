@@ -40,7 +40,6 @@ TENS = {2: "twenty", 3: "thirty", 4: "forty", 5: "fifty",
         6: "sixty", 7: "seventy", 8: "eighty", 9: "ninety"}
 
 
-
 def clear():
     """wipe the terminal screen"""
 
@@ -91,12 +90,6 @@ def num2written(number: object):
     if number > MAX_LIMIT_NUMBER:
         # max number we can convert to it is billion.
         return -1
-
-    # first convert the number to  string.
-    number_str = str(number)
-
-    # second get the number length.
-    number_len = len(number_str)
 
     if number < 10:
         return ONES[number]
