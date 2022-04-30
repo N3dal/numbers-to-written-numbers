@@ -94,23 +94,25 @@ def num2written(number: object):
     if number < 10:
         return ONES[number]
 
-    if 9 < number < 20:
+    elif 9 < number < 20:
         return TEENS[number % 10]
 
-    if 19 < number < 100:
+    elif 19 < number < 100:
         return TENS[number//10] + "-" + ONES[number % 10]
 
-    if 99 < number < 1000:
+    elif 99 < number < 1000:
         return ONES[number // 100] + " " + "hundred" + " and " + num2written(number % 100)
 
-    if 999 < number < (1000**2):
+    elif 999 < number < (1000**2):
         return num2written(number // (1000)) + " " + "thousand" + " and " + num2written(number % (1000))
 
-    if 999_999 < number < (1000**3):
+    elif 999_999 < number < (1000**3):
         return num2written(number // (1000**2)) + " " + "million" + " and " + num2written(number % (1000**2))
 
-    if 999_999_999 < number < (1000**4):
+    elif 999_999_999 < number < (1000**4):
         return num2written(number // (1000**3)) + " " + "billion" + " and " + num2written(number % (1000**3))
+    else:
+        return -1
 
 
 def main():
