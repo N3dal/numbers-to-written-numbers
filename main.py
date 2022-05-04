@@ -23,7 +23,6 @@
 # TODO: write the written number, in simple words convert from (binary/hex/oct) to written num.
 # TODO: convert any exp number to written for example "3e10" express on it first then write it.
 # TODO: or "3.5E10" same thing.
-# TODO: make this script able to express any negative number either float or integer, or even string.
 
 
 from os import name as OS_NAME
@@ -71,7 +70,6 @@ def num2written(number: object):
     """
 
     # Guard conditions.
-
     if type(number) not in (int,  str):
         return -1
 
@@ -87,6 +85,13 @@ def num2written(number: object):
     if number > MAX_LIMIT_NUMBER:
         # max number we can convert to it is billion.
         return -1
+
+    if number < 0:
+        # in case of negative numbers.
+        return "minus " + num2written(abs(number))
+
+    if number == 0:
+        return "Zero"
 
     if number < 10:
         return ONES[number]
@@ -123,7 +128,7 @@ def main():
     # make sure to remvoe simply out strip the result from the 'and',
     # and spaces.
     # result = num2written('2342_23').strip('and').strip()
-    result = num2written("2423-adf")
+    result = num2written("-323")
 
     print(result, '.', sep='')
 
