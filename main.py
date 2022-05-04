@@ -61,6 +61,8 @@ def num2written(number: object):
     '12345' => [VALID]
     '12_345' => [VALID]
     12_345 => [VALID]
+    -12_345 => [VALID]
+    '-11_625' => [VALID]
     '12_345.32' => [NON-VALID]
     12345 => [VALID]
     123.45 => [NON-VALID]
@@ -75,6 +77,8 @@ def num2written(number: object):
 
     if type(number) is str:
 
+        # make copy of the number as string.
+        number_as_string = number
         try:
             number = int(number)
 
@@ -91,7 +95,7 @@ def num2written(number: object):
         return "minus " + num2written(abs(number))
 
     if number == 0:
-        return "Zero"
+        return " ".join("zero" for _ in range(number_as_string.count('0'))).capitalize()
 
     if number < 10:
         return ONES[number]
@@ -128,7 +132,7 @@ def main():
     # make sure to remvoe simply out strip the result from the 'and',
     # and spaces.
     # result = num2written('2342_23').strip('and').strip()
-    result = num2written("-323")
+    result = num2written("000")
 
     print(result, '.', sep='')
 
