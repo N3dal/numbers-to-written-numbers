@@ -82,10 +82,7 @@ def num2written(number: object):
 
         except ValueError:
 
-            try:
-                number = int(number)
-            except ValueError:
-                return -1
+            return -1
 
     if number > MAX_LIMIT_NUMBER:
         # max number we can convert to it is billion.
@@ -125,7 +122,8 @@ def main():
 
     # make sure to remvoe simply out strip the result from the 'and',
     # and spaces.
-    result = num2written(int(34e9)).strip('and').strip()
+    # result = num2written('2342_23').strip('and').strip()
+    result = num2written("2423-adf")
 
     print(result, '.', sep='')
 
