@@ -17,7 +17,7 @@
 # 21=> "twenty-one" not "twenty one",
 # 771=> "seven hundred and seventy-one" not "seven hundred and seventy
 # -----------------------------------------------------------------
-# simple script forone"
+
 
 # TODO: make this script convert from binary/hex/oct to decimal then,
 # TODO: write the written number, in simple words convert from (binary/hex/oct) to written num.
@@ -103,19 +103,19 @@ def num2written(number: object):
 
     elif 99 < number < 1000:
         # remove the space then remove the 'a' and 'n' and 'd', then remove the space again.
-        return (ONES[number // 100] + " " + "hundred" + " and " + num2written(number % 100)).strip().strip('and').strip()
+        return (ONES[number // 100] + " " + "hundred" + " and " + num2written(number % 100)).strip()
 
     elif 999 < number < (1000**2):
         # remove the space then remove the 'a' and 'n' and 'd', then remove the space again.
-        return (num2written(number // (1000)) + " " + "thousand" + " and " + num2written(number % (1000))).strip().strip('and').strip()
+        return (num2written(number // (1000)) + " " + "thousand" + " and " + num2written(number % (1000))).strip()
 
     elif 999_999 < number < (1000**3):
         # remove the space then remove the 'a' and 'n' and 'd', then remove the space again.
-        return (num2written(number // (1000**2)) + " " + "million" + " and " + num2written(number % (1000**2))).strip().strip('and').strip()
+        return (num2written(number // (1000**2)) + " " + "million" + " and " + num2written(number % (1000**2))).strip()
 
     elif 999_999_999 < number < (1000**4):
         # remove the space then remove the 'a' and 'n' and 'd', then remove the space again.
-        return (num2written(number // (1000**3)) + " " + "billion" + " and " + num2written(number % (1000**3))).strip().strip('and').strip()
+        return (num2written(number // (1000**3)) + " " + "billion" + " and " + num2written(number % (1000**3))).strip()
 
     else:
         return -1
@@ -123,7 +123,11 @@ def num2written(number: object):
 
 def main():
 
-    print(num2written(1_000_000), '.', sep='')
+    # make sure to remvoe simply out strip the result from the 'and',
+    # and spaces.
+    result = num2written(int(34e9)).strip('and').strip()
+
+    print(result, '.', sep='')
 
 
 if __name__ == "__main__":
