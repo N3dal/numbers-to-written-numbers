@@ -9,4 +9,4 @@ to written format.
 
 # TODO:
 
-[ ] make gui app using either tkinter or gtk.
+- [ ] make gui app using either tkinter or gtk.
