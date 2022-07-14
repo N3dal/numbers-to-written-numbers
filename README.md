@@ -6,7 +6,7 @@ return it as **string**.
 
 This project built with ![python](https://img.shields.io/badge/python-3.x-green) and ❤️.
 
-**how it works**:
+**how it is works**:
 `121 => "one hundred and twenty-one"`
 `3.14 => "three point fourteen".`
 
