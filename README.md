@@ -14,10 +14,10 @@ This project built with ![python](https://img.shields.io/badge/python-3.x-green)
 ``` py
     num2written("your-number-here")
 ```
-ex:
+
+example:
 ```py
-    written_number = num2written(1234)
-    
+    written_number = num2written(1234)    
     print(written_number)
 ```
 
@@ -25,17 +25,11 @@ ex:
 Valid Inputs:
 ```py
     num2written(1234)
-
     num2written("1234")
-
     num2written(12_345)
-
     num2written("12_345")
-
     num2written("-11_625")
-
     num2written(-11_625)
-
 ```
 
 
