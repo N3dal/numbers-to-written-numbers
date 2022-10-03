@@ -15,14 +15,14 @@ This project built with ![python](https://img.shields.io/badge/python-3.x-green)
     num2written("your-number-here")
 ```
 
-example:
+### example:
 ```py
     written_number = num2written(1234)    
     print(written_number)
 ```
 
 
-Valid Inputs:
+### Valid Inputs:
 ```py
     num2written(1234)
     num2written("1234")
