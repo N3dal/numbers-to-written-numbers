@@ -129,12 +129,10 @@ def num2written(number: object):
 
 def main():
 
-    # make sure to remvoe simply out strip the result from the 'and',
-    # and spaces.
-    # result = num2written('2342_23').strip('and').strip()
-    result = num2written("000")
 
-    print(result, '.', sep='')
+    result = num2written("1324")
+
+    print(result)
 
 
 if __name__ == "__main__":
