@@ -1,6 +1,6 @@
 # Numbers to Words converter.
 
-<!-- ![wallpaper](./src/pic01.png) -->
+![wallpaper](./src/pic01.png)
 
 simple script to convert **'Integers'** and **'Floats'** to words
 in simple words convert any number to the written form of it and
